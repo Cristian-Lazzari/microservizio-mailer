@@ -13,8 +13,8 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
       
-      $name = env('SEEDER_USER_NAME');
-      $email = env('SEEDER_USER_EMAIL');
+      $name = 'Cristian';
+      $email = 'cristian.lazzari.cl@gmail.com';
       $password = Hash::make(env('SEEDER_USER_PASSWORD'));
 
       // $name = "Cristian";
