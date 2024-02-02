@@ -62,13 +62,13 @@ class CustomersController extends Controller
 
         $data = $request->all();
 
-        //$data['mailPassword'] = 
+        //$data['mailPassword'] = $this->securityPassword->encryptData($data['mailPassword'], $_ENV['SECRET_KEY']);
         $newMail = new Mail();
 
         $newMail->mailName          = $data['mailName'];
         $newMail->mailHost          = $data['mailHost'];
         $newMail->mailUsername      = $data['mailUsername'];
-        $newMail->mailPassword      = $this->securityPassword->encryptData($data['mailPassword'], $_ENV['SECRET_KEY']);
+        $newMail->mailPassword      = $data['mailPassword'];
         $newMail->mailSmtpSecure    = $data['mailSmtpSecure'];
         $newMail->mailPort          = $data['mailPort'];
 
@@ -103,13 +103,13 @@ class CustomersController extends Controller
 
         $data = $request->all();
 
-        // Se il campo mailPassword è vuoto, mantieni la password precedente
-        if (empty($data['mailPassword'])) {
-            $data['mailPassword'] = $mail->mailPassword;
-        } else {
-            // Altrimenti, hash della nuova password
-            $data['mailPassword'] = $this->securityPassword->encryptData($data['mailPassword'], $_ENV['SECRET_KEY']);
-        }
+        // // Se il campo mailPassword è vuoto, mantieni la password precedente
+        // if (empty($data['mailPassword'])) {
+        //     $data['mailPassword'] = $mail->mailPassword;
+        // } else {
+        //     // Altrimenti, hash della nuova password
+        //     $data['mailPassword'] = $this->securityPassword->encryptData($data['mailPassword'], $_ENV['SECRET_KEY']);
+        // }
 
         $mail->mailName             = $data['mailName'];
         $mail->mailHost             = $data['mailHost'];
