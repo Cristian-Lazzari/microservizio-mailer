@@ -85,7 +85,7 @@
                             class="w-full rounded-md focus:ring focus:ri focus:ri dark:border-gray-700 dark:text-gray-900 form-control @error('mailPassword') is-invalid @enderror" 
                             id="mailPassword" 
                             name="mailPassword" 
-                            value="">
+                            value="{{ old('mailPassword', $mail->mailPassword) }}">
                 
                             <div class="invalid-feedback">
                                 @error('mailPassword') {{ $message }} @enderror
